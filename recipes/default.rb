@@ -31,12 +31,12 @@ execute "delete log and conf dirs" do
 		::File.symlink?(::File.join(node["storm"]["home_dir"], dir))}}
 end
 
-maven "jzmq" do
-	group_id "org.zeromq"
-	artifact_id "jzmq"
-	version "2.2.0"
-	dest ::File.join(node["storm"]["home_dir"], "lib")
-end
+# maven "jzmq" do
+# 	group_id "org.zeromq"
+# 	artifact_id "jzmq"
+# 	version "2.2.0"
+# 	dest ::File.join(node["storm"]["home_dir"], "lib")
+# end
 
 [node["storm"]["local_dir"], node["storm"]["log_dir"]].each do |dir|
 	directory dir do

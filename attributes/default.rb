@@ -1,6 +1,6 @@
-default["storm"]["version"] = "0.8.2"
-default["storm"]["download_url"] = "https://dl.dropbox.com/u/133901206/storm-0.8.2.zip"
-default["storm"]["checksum"] = "8761aea0b54e5bab4a68b259bbe6b5b2f8226204488b5559eba57a0c458b2bbc"
+default["storm"]["version"] = "0.9.0.1"
+default["storm"]["download_url"] = "https://dl.dropboxusercontent.com/s/tqdpoif32gufapo/storm-0.9.0.1.tar.gz"
+default["storm"]["checksum"] = "0596764a3693367388f45d80d6ba2f32417ee930c5732a3dde9f5848e1e3c7d8"
 
 default["storm"]["user"] = "storm"
 default["storm"]["group"] = "storm"
@@ -9,7 +9,7 @@ default["storm"]["conf_dir"] = "/etc/storm"
 default["storm"]["log_dir"] = "/var/log/storm"
 
 # general storm attributes
-default['storm']['local_dir'] = "/mnt/storm"
+default['storm']['local_dir'] = "/opt/storm"
 default['storm']['local_mode_zmq'] = "false"
 default['storm']['cluster_mode'] = "distributed"
 default['storm']['cluster_name'] = "default"
@@ -66,7 +66,7 @@ default['storm']['transactional']['zookeeper']['root'] = "/storm-transactional"
 default['storm']['transactional']['zookeeper']['port'] = 2181
 
 # topology attributes
-default['storm']['topology']['debug'] = false
+default['storm']['topology']['debug'] = true
 default['storm']['topology']['optimize'] = true
 default['storm']['topology']['workers'] = 1
 default['storm']['topology']['acker_executors'] = 1

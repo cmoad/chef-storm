@@ -6,8 +6,6 @@
 # 
 
 package "zip"
-include_recipe "java"
-include_recipe "zeromq"
 include_recipe "maven"
 
 group node["storm"]["group"]
@@ -30,13 +28,6 @@ execute "delete log and conf dirs" do
 	not_if { %w(logs conf).inject(true) { |a, dir| a and
 		::File.symlink?(::File.join(node["storm"]["home_dir"], dir))}}
 end
-
-# maven "jzmq" do
-# 	group_id "org.zeromq"
-# 	artifact_id "jzmq"
-# 	version "2.2.0"
-# 	dest ::File.join(node["storm"]["home_dir"], "lib")
-# end
 
 [node["storm"]["local_dir"], node["storm"]["log_dir"]].each do |dir|
 	directory dir do

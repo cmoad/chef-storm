@@ -5,7 +5,7 @@
 # Copyright (C) 2013 Fewbytes
 # 
 
-include_recipe "storm"
+include_recipe "storm::default"
 
 runit_service "storm-ui" do
 	run_template_name "storm"

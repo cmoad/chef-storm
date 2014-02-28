@@ -58,8 +58,11 @@ default['storm']['ui']['childopts'] = "-Xmx768m"
 
 # drpc attributes
 default['storm']['drpc']['port'] = 3772
+default['storm']['drpc']['worker_threads'] = 64
+default['storm']['drpc']['queue_size'] = 128
 default['storm']['drpc']['invocations_port'] = 3773
 default['storm']['drpc']['request_timeout_secs'] = 600
+default['storm']['drpc']['childopts'] = "-Xmx768m"
 
 # transactional attributes
 default['storm']['transactional']['zookeeper']['root'] = "/storm-transactional"

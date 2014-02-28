@@ -63,8 +63,11 @@ ui.childopts: "<%= node[:storm][:ui][:childopts] %>"
 
 ### drpc.* configs
 drpc.port: <%= node[:storm][:drpc][:port] %>
+drpc.worker.threads: <%= node[:storm][:drpc][:worker_threads] %>
+drpc.queue.size: <%= node[:storm][:drpc][:queue_size] %>
 drpc.invocations.port: <%= node[:storm][:drpc][:invocations_port] %>
 drpc.request.timeout.secs: <%= node[:storm][:drpc][:request_timeout_secs] %>
+drpc.childopts: <%= node[:storm][:drpc][:childopts] %>
 
 
 

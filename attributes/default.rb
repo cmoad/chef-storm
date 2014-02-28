@@ -66,7 +66,7 @@ default['storm']['transactional']['zookeeper']['root'] = "/storm-transactional"
 default['storm']['transactional']['zookeeper']['port'] = 2181
 
 # topology attributes
-default['storm']['topology']['debug'] = true
+default['storm']['topology']['debug'] = false
 default['storm']['topology']['optimize'] = true
 default['storm']['topology']['workers'] = 1
 default['storm']['topology']['acker_executors'] = 1

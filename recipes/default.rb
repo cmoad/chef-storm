@@ -56,7 +56,7 @@ link ::File.join(node["storm"]["home_dir"], "storm-#{node["storm"]["version"]}",
 end
 
 if Chef::Config[:solo]
-	Chef::Log.warn "Chef solo does not support search, assuming Zookeeper and Nimbus are on this node"
+	Chef::Log.warn "Chef solo does not support search, assuming Zookeeper, Nimbus and if set then drpc are on this node"
 	nimbus = node
 	zk_nodes = [node]
 	if node['storm']['drpc']['switch'] 

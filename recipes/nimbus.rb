@@ -1,8 +1,6 @@
 #
 # Cookbook Name:: storm
 # Recipe:: supervisor
-#
-# Copyright (C) 2013 Fewbytes
 # 
 
 include_recipe "storm::default"

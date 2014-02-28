@@ -1,8 +1,6 @@
 #
 # Cookbook Name:: storm
 # Recipe:: default
-#
-# Copyright (C) 2013 Fewbytes
 # 
 
 package "zip"

@@ -70,9 +70,9 @@ drpc.invocations.port: <%= node[:storm][:drpc][:invocations_port] %>
 drpc.request.timeout.secs: <%= node[:storm][:drpc][:request_timeout_secs] %>
 drpc.childopts: "<%= node[:storm][:drpc][:childopts] %>"
 drpc.servers: 
-	<% @drpc_servers.each do |server| -%>
-	- "<%= server[:ipaddress] %>"
-	<% end -%>
+    <% @drpc_servers.each do |server| -%>
+    - "<%= server[:ipaddress] %>"
+    <% end -%>
 <% end -%>
 
 

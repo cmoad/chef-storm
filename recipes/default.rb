@@ -59,6 +59,9 @@ if Chef::Config[:solo]
 	Chef::Log.warn "Chef solo does not support search, assuming Zookeeper and Nimbus are on this node"
 	nimbus = node
 	zk_nodes = [node]
+	if node['storm']['drpc']['switch'] 
+		drpc_servers = [node]
+	end
 else
 	nimbus = if node.recipe? "storm::nimbus"
 		node
@@ -69,9 +72,10 @@ else
 	end
 	zk_nodes = search(:node, "zookeeper_cluster_name:#{node["storm"]["zookeeper"]["cluster_name"]} AND chef_environment:#{node.chef_environment}").sort{|a, b| a.name <=> b.name}
 	raise RuntimeError, "No zookeeper nodes nodes found" if zk_nodes.empty?
+	raise RuntimeError, "This script will not work with chef client and drpc servers." if node['storm']['drpc']['switch']
 end
 
 template ::File.join(node["storm"]["conf_dir"], "storm.yaml") do
 	mode 00644
-	variables :zookeeper_nodes => zk_nodes, :nimbus => nimbus
+	variables :zookeeper_nodes => zk_nodes, :nimbus => nimbus, :drpc_servers => drpc_servers
 end

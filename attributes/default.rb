@@ -57,6 +57,7 @@ default['storm']['ui']['port'] = 8080
 default['storm']['ui']['childopts'] = "-Xmx768m"
 
 # drpc attributes
+default['storm']['drpc']['switch'] = false
 default['storm']['drpc']['port'] = 3772
 default['storm']['drpc']['worker_threads'] = 64
 default['storm']['drpc']['queue_size'] = 128

@@ -84,3 +84,5 @@ default['storm']['topology']['state_synchronization_timeout_secs'] = 60
 default['storm']['topology']['stats_sample_rate'] = 0.05
 default['storm']['topology']['fall_back_on_java_serialization'] = true
 default['storm']['topology']['worker_childopts'] = "null"
+
+default['storm']['runit']['verbose'] = false

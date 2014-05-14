@@ -1,3 +1,9 @@
+# java options
+default['java']['jdk_version'] = '7'
+default['java']['install_flavor'] = 'oracle'
+default['java']['oracle']['accept_oracle_download_terms'] = true
+
+# storm version
 default["storm"]["version"] = "0.9.0.1"
 default["storm"]["download_url"] = "https://dl.dropboxusercontent.com/s/tqdpoif32gufapo/storm-0.9.0.1.tar.gz"
 default["storm"]["checksum"] = "0596764a3693367388f45d80d6ba2f32417ee930c5732a3dde9f5848e1e3c7d8"

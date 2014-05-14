@@ -1,5 +1,7 @@
 package "zip"
+include_recipe "java::default"
 include_recipe "maven"
+include_recipe "runit"
 
 group node["storm"]["group"]
 

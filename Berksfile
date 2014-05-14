@@ -1,7 +1,7 @@
 # vim: ft=ruby
-site :opscode
+source "https://api.berkshelf.com"
 
 metadata
 
-cookbook "zeromq", github: "kapad/zeromq"
-cookbook "zookeeper", github: "kapad/zookeeper"
+cookbook "zeromq", github: "fewbytes-cookbooks/zeromq"
+cookbook "zookeeper"

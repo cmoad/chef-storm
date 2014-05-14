@@ -1,3 +1,5 @@
+include_recipe "storm::default"
+
 runit_service "storm-ui" do
 	run_template_name "storm"
 	log_template_name "storm"

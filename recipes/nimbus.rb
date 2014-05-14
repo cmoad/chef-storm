@@ -1,8 +1,3 @@
-#
-# Cookbook Name:: storm
-# Recipe:: supervisor
-# 
-
 runit_service "storm-ui" do
 	run_template_name "storm"
 	log_template_name "storm"

@@ -1,6 +1,6 @@
 name             "storm"
-maintainer       "Avishai Ish-Shalom"
-maintainer_email "avishai@fewbytes.com"
+maintainer       "Yuval Oren"
+maintainer_email "yuval@n3twork.com"
 license          "Apache v2"
 description      "Installs/Configures storm"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))

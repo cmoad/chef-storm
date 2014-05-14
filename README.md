@@ -14,7 +14,9 @@ storm::default - Installs storm files, configures directories, etc.
 storm::nimbus - nimbus and UI services
 storm::supervisor - supervisor daemon
 
-# Author
-Some parts (templates and attributes) have been copied from Webtrends' cookbook (https://github.com/Webtrends/Cookbooks/blob/master/storm); Credit is due.
+# Acknowledgements
+Thanks to the authors of cookbooks from which this is derived:
 
-Author:: Avishai Ish-Shalom (<avishai@fewbytes.com>)
+* [Webtrends/storm](https://github.com/Webtrends/storm)
+* [fewbytes-cookbooks/storm](https://github.com/fewbytes-cookbooks/storm)
+* [kapad/storm](https://github.com/kapad/storm)

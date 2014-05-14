@@ -1,8 +1,3 @@
-#
-# Cookbook Name:: storm
-# Recipe:: default
-# 
-
 package "zip"
 include_recipe "maven"
 

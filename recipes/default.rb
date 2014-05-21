@@ -1,12 +1,11 @@
-package "zip"
 include_recipe "java::default"
-include_recipe "maven"
 include_recipe "runit"
 
 group node["storm"]["group"]
 
 user node["storm"]["user"] do
 	gid node["storm"]["group"]
+  home node["storm"]["home_dir"]
 end
 
 ark "storm" do
@@ -17,17 +16,11 @@ ark "storm" do
 	action :install
 end
 
-directory ::File.join(node['storm']['home_dir'], "storm-#{node["storm"]["version"]}") do
-	owner node["storm"]["user"]
-	group node["storm"]["group"]
-	recursive true
-end
-
 execute "delete log and conf dirs" do
 	command "rm -rf logs conf"
-	cwd ::File.join(node["storm"]["home_dir"], "storm-#{node["storm"]["version"]}")
+	cwd node["storm"]["home_dir"]
 	not_if { %w(logs conf).inject(true) { |a, dir| a and
-		::File.symlink?(::File.join(node["storm"]["home_dir"], "storm-#{node["storm"]["version"]}", dir))}}
+		::File.symlink?(::File.join(node["storm"]["home_dir"], dir))}}
 end
 
 [node["storm"]["local_dir"], node["storm"]["log_dir"]].each do |dir|
@@ -44,11 +37,11 @@ directory node["storm"]["conf_dir"] do
 	action :create
 end
 
-link ::File.join(node["storm"]["home_dir"], "storm-#{node["storm"]["version"]}", "conf") do
+link ::File.join(node["storm"]["home_dir"], "conf") do
 	to node["storm"]["conf_dir"]
 end
 
-link ::File.join(node["storm"]["home_dir"], "storm-#{node["storm"]["version"]}", "logs") do
+link ::File.join(node["storm"]["home_dir"], "logs") do
 	to node["storm"]["log_dir"]
 end
 

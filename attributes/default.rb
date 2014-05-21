@@ -4,18 +4,18 @@ default['java']['install_flavor'] = 'oracle'
 default['java']['oracle']['accept_oracle_download_terms'] = true
 
 # storm version
-default["storm"]["version"] = "0.9.0.1"
-default["storm"]["download_url"] = "https://dl.dropboxusercontent.com/s/tqdpoif32gufapo/storm-0.9.0.1.tar.gz"
-default["storm"]["checksum"] = "0596764a3693367388f45d80d6ba2f32417ee930c5732a3dde9f5848e1e3c7d8"
+default["storm"]["version"] = "0.9.1-incubating"
+default["storm"]["download_url"] = "http://www.us.apache.org/dist/incubator/storm/apache-storm-0.9.1-incubating/apache-storm-0.9.1-incubating.tar.gz"
+default["storm"]["checksum"] = "8bc613cba73486761103ffddd89f9451772fd2b00068340ca1d8773c114bbfcf"
 
 default["storm"]["user"] = "storm"
 default["storm"]["group"] = "storm"
-default["storm"]["home_dir"] = "/usr/local/storm"
+default["storm"]["home_dir"] = "/opt/storm"
 default["storm"]["conf_dir"] = "/etc/storm"
 default["storm"]["log_dir"] = "/var/log/storm"
 
 # general storm attributes
-default['storm']['local_dir'] = "/opt/storm"
+default['storm']['local_dir'] = "/var/storm"
 default['storm']['local_mode_zmq'] = "false"
 default['storm']['cluster_mode'] = "distributed"
 default['storm']['cluster_name'] = "default"
@@ -47,6 +47,7 @@ default['storm']['zmq']['longer_millis'] = 5000
 
 # nimbus attributes
 default['storm']['nimbus']['host'] = ""
+default['storm']['nimbus']['thrift_max_buffer_size'] = 2097152
 default['storm']['nimbus']['thrift_port'] = 6627
 default['storm']['nimbus']['childopts'] = "-Xmx1024m"
 default['storm']['nimbus']['task_timeout_secs'] = 30

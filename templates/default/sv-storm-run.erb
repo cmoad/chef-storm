@@ -1,5 +1,5 @@
 #! /bin/sh
 
-cd <%= ::File.join(node["storm"]["home_dir"], "storm-#{node["storm"]["version"]}") %>
+cd <%= node["storm"]["home_dir"] %>
 exec chpst -u <%= node["storm"]["user"] %>:<%= node["storm"]["group"] %> \
 	bin/storm <%= @options[:daemon] %>

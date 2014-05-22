@@ -46,12 +46,35 @@ link ::File.join(node["storm"]["home_dir"], "logs") do
 end
 
 if Chef::Config[:solo]
-	Chef::Log.warn "Chef solo does not support search, assuming Zookeeper, Nimbus and if set then drpc are on this node"
-	nimbus = node
-	zk_nodes = [node]
-	if node['storm']['drpc']['switch'] 
-		drpc_servers = [node]
-	end
+  # If we're on OpsWorks, get hosts from the layers
+  if node[:opsworks]
+    Chef::Log.info "Detected OpsWorks."
+    if node[:opsworks][:layers]["zookeeper"]
+      Chef::Log.info "Detected zookeeper layer"
+      zk_nodes = []
+      node[:opsworks][:layers]['zookeeper'][:instances].each do |k,v|
+        zk_nodes << v
+      end
+    else
+      zk_nodes = [node]
+    end
+
+    if node[:opsworks][:layers]["storm-nimbus"]
+      Chef::Log.info "Detected nimbus layer"
+      node[:opsworks][:layers]['storm-nimbus'][:instances].each do |k,v|
+        nimbus = v;
+      end
+    else
+      nimbus = node
+    end
+  else
+    Chef::Log.warn "Chef solo does not support search, assuming Zookeeper, Nimbus and if set then drpc are on this node"
+    nimbus = node
+    zk_nodes = [node]
+    if node['storm']['drpc']['switch']
+      drpc_servers = [node]
+    end
+  end
 else
 	nimbus = if node.recipe? "storm::nimbus"
 		node
@@ -61,9 +84,12 @@ else
 		nimbus_nodes.sort{|a, b| a.name <=> b.name}.first
 	end
 	zk_nodes = search(:node, "zookeeper_cluster_name:#{node["storm"]["zookeeper"]["cluster_name"]} AND chef_environment:#{node.chef_environment}").sort{|a, b| a.name <=> b.name}
-	raise RuntimeError, "No zookeeper nodes nodes found" if zk_nodes.empty?
-	raise RuntimeError, "This script will not work with chef client and drpc servers." if node['storm']['drpc']['switch']
 end
+
+
+
+raise RuntimeError, "No zookeeper nodes nodes found" if zk_nodes.empty?
+raise RuntimeError, "This script will not work with chef client and drpc servers." if node['storm']['drpc']['switch']
 
 template ::File.join(node["storm"]["conf_dir"], "storm.yaml") do
 	mode 00644

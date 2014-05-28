@@ -82,7 +82,7 @@ drpc.servers:
 ### transactional.* configs
 transactional.zookeeper.servers:
 <% @zookeeper_nodes.each do |host| -%>
-    - "<%= host[:ipaddress] %>"
+    - "<%= host[:public_dns_name] || host[:ipaddress] || host[:ip] %>"
 <% end -%>
 transactional.zookeeper.root: "<%= node[:storm][:transactional][:zookeeper][:root] %>"
 transactional.zookeeper.port: <%= node[:storm][:transactional][:zookeeper][:port] %>

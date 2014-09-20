@@ -1,0 +1,18 @@
+description "<%= @name %>"
+
+start on net-device-up IFACE=eth0
+stop on runlevel [!2345]
+env enabled=1
+
+setuid <%= @user %>
+setgid <%= @group %>
+
+# respawn the process if it crashes
+respawn
+
+script
+[ "$enabled" = "1" ] || [ "$force_start" = "1" ] || exit 0
+
+cd <%= @dir %>
+bin/storm <%= @name %> | logger -t storm-<%= @name %>
+end script

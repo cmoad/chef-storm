@@ -92,8 +92,3 @@ template ::File.join(node["storm"]["conf_dir"], "storm.yaml") do
 	mode 00644
 	variables :zookeeper_nodes => zk_nodes, :nimbus => nimbus, :drpc_servers => drpc_servers
 end
-
-template ::File.join(node["storm"]["home_dir"], "logback", "cluster.xml") do
-  mode 00644
-  source "logback.xml.erb"
-end

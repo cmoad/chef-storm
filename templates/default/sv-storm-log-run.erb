@@ -1,0 +1,7 @@
+#! /bin/sh
+
+<% if node[:storm][:runit][:verbose] -%>
+exec svlogd -ttv ./main
+<% else -%>
+exec svlogd -tt ./main
+<% end -%>

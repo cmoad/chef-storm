@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <appender name="SYSLOG" class="ch.qos.logback.classic.net.SyslogAppender">
+        <syslogHost>127.0.0.1</syslogHost>
+        <facility>USER</facility>
+        <suffixPattern>[storm] [%thread] %c{1} [%p] %m%n</suffixPattern>
+     </appender>
+
+     <root level="INFO">
+        <appender-ref ref="SYSLOG"/>
+     </root>
+
+     <logger name="backtype.storm.security.auth.authorizer" additivity="false">
+         <level value="INFO" />
+        <appender-ref ref="SYSLOG" />
+     </logger>
+
+     <logger name="backtype.storm.metric.LoggingMetricsConsumer" additivity="false" >
+         <level value="INFO"/>
+         <appender-ref ref="SYSLOG"/>
+    </logger>
+</configuration>

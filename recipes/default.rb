@@ -58,13 +58,12 @@ if node[:opsworks]
     zk_nodes = [node]
   end
 
+  nimbus = node
   if node[:opsworks][:layers]["storm-nimbus"]
     Chef::Log.info "Detected nimbus layer"
     node[:opsworks][:layers]['storm-nimbus'][:instances].each do |k, v|
       nimbus = v;
     end
-  else
-    nimbus = node
   end
 
 elsif Chef::Config[:solo]

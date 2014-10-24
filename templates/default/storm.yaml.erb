@@ -42,7 +42,7 @@ zmq.linger.millis: <%= node[:storm][:zmq][:longer_millis] %>
 
 
 ### nimbus.* configs are for the master
-nimbus.host: "<%= @nimbus[:ipaddress] %>"
+nimbus.host: "<%= @nimbus[:public_dns_name] || @nimbus[:ipaddress] || @nimbus[:ip] %>"
 nimbus.thrift.max_buffer_size: <%= node[:storm][:nimbus][:thrift_max_buffer_size] %>
 nimbus.thrift.port: <%= node[:storm][:nimbus][:thrift_port] %>
 nimbus.childopts: "<%= node[:storm][:nimbus][:childopts] %>"
@@ -73,7 +73,7 @@ drpc.request.timeout.secs: <%= node[:storm][:drpc][:request_timeout_secs] %>
 drpc.childopts: "<%= node[:storm][:drpc][:childopts] %>"
 drpc.servers: 
     <% @drpc_servers.each do |server| -%>
-    - "<%= server[:ipaddress] %>"
+    - "<%= server[:public_dns_name] || server[:ipaddress] || server[:ip] %>"
     <% end -%>
 <% end -%>
 

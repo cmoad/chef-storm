@@ -62,7 +62,9 @@ if node[:opsworks]
   if node[:opsworks][:layers]["storm-nimbus"]
     Chef::Log.info "Detected nimbus layer"
     node[:opsworks][:layers]['storm-nimbus'][:instances].each do |k, v|
-      nimbus = v;
+      if v[:ip]
+        nimbus = v;
+      end
     end
   end
 

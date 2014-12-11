@@ -8,6 +8,5 @@ version          "0.1.3"
 
 depends          "ark"
 depends          "java"
-depends          "maven"
 depends          "runit", "> 1.0.0"
-depends          "zeromq"
+

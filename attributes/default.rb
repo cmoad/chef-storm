@@ -4,9 +4,9 @@ default['java']['install_flavor'] = 'oracle'
 default['java']['oracle']['accept_oracle_download_terms'] = true
 
 # storm version
-default["storm"]["version"] = "0.9.2-incubating"
-default["storm"]["download_url"] = "http://www.us.apache.org/dist/incubator/storm/apache-storm-0.9.2-incubating/apache-storm-0.9.2-incubating.tar.gz"
-default["storm"]["checksum"] = "8881e8e95bc8bc258dcba7b8be0b7ded942795f69f4aa6c682c9f3c4d927c492" #sha-256
+default["storm"]["version"] = "0.9.3"
+default["storm"]["download_url"] = "http://www.us.apache.org/dist/storm/apache-storm-0.9.3/apache-storm-0.9.3.tar.gz"
+default["storm"]["checksum"] = "45d7e51115630985d5ed32f3806f26b4c870fa7458eb28e7beca46d482202f6d" #sha-256
 
 default["storm"]["user"] = "storm"
 default["storm"]["group"] = "storm"

@@ -44,7 +44,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     }
 
     chef.run_list = [
-        "recipe[zookeeper]",
         "recipe[storm::nimbus]",
         "recipe[storm::supervisor]"
     ]

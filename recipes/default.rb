@@ -98,3 +98,8 @@ template ::File.join(node["storm"]["home_dir"], "logback", "cluster.xml") do
   mode 00644
   source "logback.xml.erb"
 end
+
+template ::File.join(node["storm"]["home_dir"], "logback", "worker.xml") do
+  mode 00644
+  source "logback-worker.xml.erb"
+end

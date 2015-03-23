@@ -18,19 +18,19 @@
 <configuration scan="true" scanPeriod="60 seconds">
 
     <root level="INFO">
-        <appender-ref ref="SYSLOG"/>
+        <!-- <appender-ref ref="SYSLOG"/> -->
         <appender-ref ref="A1"/>
     </root>
 
     <logger name="backtype.storm.security.auth.authorizer" additivity="false">
         <level value="INFO" />
-        <appender-ref ref="SYSLOG" />
+        <!-- <appender-ref ref="SYSLOG" /> -->
         <appender-ref ref="ACCESS" />
     </logger>
 
     <logger name="backtype.storm.metric.LoggingMetricsConsumer" additivity="false" >
         <level value="INFO"/>
-        <appender-ref ref="SYSLOG"/>
+        <!-- <appender-ref ref="SYSLOG"/> -->
         <appender-ref ref="METRICS"/>
     </logger>
 

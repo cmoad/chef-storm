@@ -2,7 +2,9 @@
 storm.local.dir: "<%= node[:storm][:local_dir] %>"
 storm.local.mode.zmq: <%= node[:storm][:local_mode_zmq] %>
 storm.cluster.mode: "<%= node[:storm][:cluster_mode] %>"
-
+<% if node[:storm][:local_hostname] -%>
+storm.local.hostname: "<%= node[:storm][:local_hostname] %>"
+<% end -%>
 
 ### zookeeper.*
 storm.zookeeper.servers:
@@ -104,5 +106,3 @@ topology.state.synchronization.timeout.secs: <%= node[:storm][:topology][:state_
 topology.stats.sample.rate: <%= node[:storm][:topology][:stats_sample_rate] %>
 topology.fall.back.on.java.serialization: <%= node[:storm][:topology][:fall_back_on_java_serialization] %>
 topology.worker.childopts: <%= node[:storm][:topology][:worker_childopts] %>
-
-

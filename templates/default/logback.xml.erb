@@ -18,19 +18,19 @@
 <configuration scan="true" scanPeriod="60 seconds">
 
     <root level="INFO">
-        <!-- <appender-ref ref="SYSLOG"/> -->
+        <appender-ref ref="SYSLOG"/>
         <appender-ref ref="A1"/>
     </root>
 
     <logger name="backtype.storm.security.auth.authorizer" additivity="false">
         <level value="INFO" />
-        <!-- <appender-ref ref="SYSLOG" /> -->
+        <appender-ref ref="SYSLOG" />
         <appender-ref ref="ACCESS" />
     </logger>
 
     <logger name="backtype.storm.metric.LoggingMetricsConsumer" additivity="false" >
         <level value="INFO"/>
-        <!-- <appender-ref ref="SYSLOG"/> -->
+        <appender-ref ref=h"SYSLOG"/>
         <appender-ref ref="METRICS"/>
     </logger>
 
@@ -43,7 +43,7 @@
     <appender name="A1" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${storm.log.dir}/${logfile.name}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${storm.log.dir}/${logfile.name}-%d.log.%i.gz</fileNamePattern>
+            <fileNamePattern>${storm.log.dir}/${logfile.name}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -58,7 +58,7 @@
     <appender name="ACCESS" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${storm.log.dir}/access.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${storm.log.dir}/access-%d.log.%i.gz</fileNamePattern>
+            <fileNamePattern>${storm.log.dir}/access-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -73,7 +73,7 @@
     <appender name="METRICS" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${storm.log.dir}/metrics.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${storm.log.dir}/metrics-%d.log.%i.gz</fileNamePattern>
+            <fileNamePattern>${storm.log.dir}/metrics-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>

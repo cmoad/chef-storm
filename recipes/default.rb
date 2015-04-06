@@ -1,4 +1,3 @@
-include_recipe "chef-sugar"
 include_recipe "java::default"
 include_recipe "runit"
 
@@ -77,7 +76,7 @@ elsif Chef::Config[:solo]
     drpc_servers = [node]
   end
 else
-  nimbus = if includes_recipe? "storm::nimbus"
+  nimbus = if node.recipe? "storm::nimbus"
              node
            else
              nimbus_nodes = search(:node, "recipes:storm\\:\\:nimbus AND storm_cluster_name:#{node["storm"]["cluster_name"]} AND chef_environment:#{node.chef_environment}")

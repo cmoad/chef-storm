@@ -84,7 +84,7 @@ else
              nimbus_nodes.sort { |a, b| a.name <=> b.name }.first
            end
   zk_nodes = search(:node, "zookeeper_cluster_name:#{node["storm"]["zookeeper"]["cluster_name"]} AND chef_environment:#{node.chef_environment}").sort { |a, b| a.name <=> b.name }
-  # raise RuntimeError, "This script will not work with chef client and drpc servers." if node['storm']['drpc']['switch']
+  drpc_servers = search(:node, "recipes:storm\\:\\:drpc AND storm_cluster_name:#{node["storm"]["cluster_name"]} AND chef_environment:#{node.chef_environment}").sort { |a, b| a.name <=> b.name }
 end
 
 raise RuntimeError, "No zookeeper nodes found" if zk_nodes.empty?
